@@ -10,7 +10,7 @@ using System.Text;
 using ExileCore;
 using ExileCore.Shared;
 using ExileCore.Shared.Interfaces;
-using ImGuiNET;
+using Hexa.NET.ImGui;
 
 namespace OptOut;
 
@@ -121,9 +121,9 @@ public class OptOut : BaseSettingsPlugin<OptOutSettings>
 
         try
         {
-            void Draw(string name) => byName[name].Draw();
+            void Draw(string name) => byName[name].Draw(new SettingsDrawContext());
 
-            if (byName.TryGetValue("Enable", out var enable)) enable.Draw();
+            if (byName.TryGetValue("Enable", out var enable)) enable.Draw(new SettingsDrawContext());
             else
             {
                 var on = Settings.Enable.Value;
